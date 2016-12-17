@@ -1,0 +1,31 @@
+{
+  "name": "watch-helper",
+  "version": "1.0.0",
+  "description": "Restart a script in a Gulp Watch",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/usrz/js-watch-helper.git"
+  },
+  "keywords": [
+    "gulp",
+    "watch",
+    "child-process",
+    "nodaemon",
+    "restart"
+  ],
+  "author": "Pier Fumagalli <pier@usrz.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/usrz/js-watch-helper/issues"
+  },
+  "homepage": "https://github.com/usrz/js-watch-helper#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^3.0.1"
+  }
+}
