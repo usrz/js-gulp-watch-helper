@@ -30,7 +30,6 @@ function exitHandler(code, signal) {
   if (this[restart]) this.start();
 }
 
-
 class WatchHelper {
 
   constructor(scriptFile, scriptParameters) {
@@ -38,6 +37,22 @@ class WatchHelper {
     this[script] = scriptFile;
     this[parameters] = scriptParameters;
     this[restart] = false;
+
+    /* Normal exit handler */
+    const handler = (code) => {
+      if (this[child] != null) this[child].kill();
+      process.exit(code);
+    };
+
+    process.once('exit', handler);
+    process.once('SIGINT', handler);
+    process.once('SIGTERM', handler);
+
+    /* Special exit handler for uncaught exceptions */
+    process.once('uncaughtException', (error) => {
+      if (this[child] != null) this[child].kill()
+      throw error;
+    });
   }
 
   get script() {
