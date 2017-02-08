@@ -38,21 +38,13 @@ class WatchHelper {
     this[parameters] = scriptParameters;
     this[restart] = false;
 
-    /* Normal exit handler */
     const handler = (code) => {
       if (this[child] != null) this[child].kill();
-      process.exit(code);
     };
 
-    process.once('exit', handler);
-    process.once('SIGINT', handler);
-    process.once('SIGTERM', handler);
-
-    /* Special exit handler for uncaught exceptions */
-    process.once('uncaughtException', (error) => {
-      if (this[child] != null) this[child].kill()
-      throw error;
-    });
+    process.on('exit', handler);
+    process.on('SIGINT', handler);
+    process.on('SIGTERM', handler);
   }
 
   get script() {
