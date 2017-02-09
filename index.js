@@ -37,14 +37,6 @@ class WatchHelper {
     this[script] = scriptFile;
     this[parameters] = scriptParameters;
     this[restart] = false;
-
-    const handler = (code) => {
-      if (this[child] != null) this[child].kill();
-    };
-
-    process.on('exit', handler);
-    process.on('SIGINT', handler);
-    process.on('SIGTERM', handler);
   }
 
   get script() {

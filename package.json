@@ -1,6 +1,6 @@
 {
   "name": "watch-helper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Restart a script in a Gulp Watch",
   "main": "index.js",
   "scripts": {
